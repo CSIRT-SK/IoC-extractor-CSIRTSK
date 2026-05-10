@@ -1,0 +1,16 @@
+# Vlastny IoC exception list.
+# Format: <ioc-type>:<value>
+# Podporovane typy: url, ip-dst, domain, email-src, md5, sha1, sha256
+# Riadky zacinajuce # su ignorovane.
+
+# Priklady:
+domain:example.com
+domain:example.org
+domain:example.net
+domain:localhost
+domain:packages.npm.org
+domain:registry.npmjs.org
+domain:registrar-servers.com
+email-src:noreply@example.com
+
+

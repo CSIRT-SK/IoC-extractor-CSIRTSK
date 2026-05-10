@@ -1,0 +1,7 @@
+{
+  "misp": {
+    "distribution": 3,
+    "analysis": 2,
+    "publish_event": true
+  }
+}

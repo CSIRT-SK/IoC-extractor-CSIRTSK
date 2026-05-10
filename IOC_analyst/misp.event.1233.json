@@ -1,0 +1,1265 @@
+{
+    "response":  [
+                     {
+                         "Event":  {
+                                       "id":  "1233",
+                                       "orgc_id":  "2",
+                                       "org_id":  "2",
+                                       "date":  "2026-04-29",
+                                       "threat_level_id":  "4",
+                                       "info":  "github iocs",
+                                       "published":  false,
+                                       "uuid":  "9ee944cf-b3da-4d24-b7b9-8e5bb5e57ade",
+                                       "attribute_count":  "42",
+                                       "analysis":  "2",
+                                       "timestamp":  "1777466630",
+                                       "distribution":  "0",
+                                       "proposal_email_lock":  false,
+                                       "locked":  false,
+                                       "publish_timestamp":  "0",
+                                       "first_publication":  "0",
+                                       "sharing_group_id":  "0",
+                                       "disable_correlation":  false,
+                                       "extends_uuid":  "",
+                                       "protected":  null,
+                                       "event_creator_email":  "adrian.ondov@csirt.sk",
+                                       "Org":  {
+                                                   "id":  "2",
+                                                   "name":  "CSIRT.SK",
+                                                   "uuid":  "1a162d74-1a46-4492-82f4-46efbb44834d",
+                                                   "local":  true
+                                               },
+                                       "Orgc":  {
+                                                    "id":  "2",
+                                                    "name":  "CSIRT.SK",
+                                                    "uuid":  "1a162d74-1a46-4492-82f4-46efbb44834d",
+                                                    "local":  true
+                                                },
+                                       "Attribute":  [
+
+                                                     ],
+                                       "ShadowAttribute":  [
+
+                                                           ],
+                                       "RelatedEvent":  [
+
+                                                        ],
+                                       "Galaxy":  [
+
+                                                  ],
+                                       "Object":  [
+                                                      {
+                                                          "id":  "13959",
+                                                          "name":  "url",
+                                                          "meta-category":  "network",
+                                                          "description":  "url object describes an url along with its normalized field (like extracted using faup parsing library) and its metadata.",
+                                                          "template_uuid":  "60efb77b-40b5-4c46-871b-ed1ed999fce5",
+                                                          "template_version":  "11",
+                                                          "event_id":  "1233",
+                                                          "uuid":  "004563bf-f6f7-444d-8d45-aff4b8387116",
+                                                          "timestamp":  "1777466549",
+                                                          "distribution":  "5",
+                                                          "sharing_group_id":  "0",
+                                                          "comment":  "URL indicators",
+                                                          "deleted":  false,
+                                                          "first_seen":  null,
+                                                          "last_seen":  null,
+                                                          "ObjectReference":  [
+
+                                                                              ],
+                                                          "Attribute":  [
+                                                                            {
+                                                                                "id":  "1616351",
+                                                                                "type":  "url",
+                                                                                "category":  "Network activity",
+                                                                                "to_ids":  true,
+                                                                                "uuid":  "3019e83f-89ca-4f3a-8672-8ed12c979fc5",
+                                                                                "event_id":  "1233",
+                                                                                "distribution":  "5",
+                                                                                "timestamp":  "1777466549",
+                                                                                "comment":  "",
+                                                                                "sharing_group_id":  "0",
+                                                                                "deleted":  false,
+                                                                                "disable_correlation":  false,
+                                                                                "object_id":  "13959",
+                                                                                "object_relation":  "url",
+                                                                                "first_seen":  null,
+                                                                                "last_seen":  null,
+                                                                                "value":  "https://erpapp-901-53f1ea72f036.herokuapp.com/",
+                                                                                "Galaxy":  [
+
+                                                                                           ],
+                                                                                "ShadowAttribute":  [
+
+                                                                                                    ]
+                                                                            },
+                                                                            {
+                                                                                "id":  "1616352",
+                                                                                "type":  "url",
+                                                                                "category":  "Network activity",
+                                                                                "to_ids":  true,
+                                                                                "uuid":  "25046357-0d80-42d9-9b34-dec1aced74e7",
+                                                                                "event_id":  "1233",
+                                                                                "distribution":  "5",
+                                                                                "timestamp":  "1777466549",
+                                                                                "comment":  "",
+                                                                                "sharing_group_id":  "0",
+                                                                                "deleted":  false,
+                                                                                "disable_correlation":  false,
+                                                                                "object_id":  "13959",
+                                                                                "object_relation":  "url",
+                                                                                "first_seen":  null,
+                                                                                "last_seen":  null,
+                                                                                "value":  "https://crmassets-4a69a8e2b3ee.herokuapp.com/",
+                                                                                "Galaxy":  [
+
+                                                                                           ],
+                                                                                "ShadowAttribute":  [
+
+                                                                                                    ]
+                                                                            },
+                                                                            {
+                                                                                "id":  "1616353",
+                                                                                "type":  "url",
+                                                                                "category":  "Network activity",
+                                                                                "to_ids":  true,
+                                                                                "uuid":  "4dd125dc-f735-4c59-8b5b-3f13d8bc4159",
+                                                                                "event_id":  "1233",
+                                                                                "distribution":  "5",
+                                                                                "timestamp":  "1777466549",
+                                                                                "comment":  "",
+                                                                                "sharing_group_id":  "0",
+                                                                                "deleted":  false,
+                                                                                "disable_correlation":  false,
+                                                                                "object_id":  "13959",
+                                                                                "object_relation":  "url",
+                                                                                "first_seen":  null,
+                                                                                "last_seen":  null,
+                                                                                "value":  "https://crmassets-351-0ac3da22f804.herokuapp.com/",
+                                                                                "Galaxy":  [
+
+                                                                                           ],
+                                                                                "ShadowAttribute":  [
+
+                                                                                                    ]
+                                                                            },
+                                                                            {
+                                                                                "id":  "1616354",
+                                                                                "type":  "url",
+                                                                                "category":  "Network activity",
+                                                                                "to_ids":  true,
+                                                                                "uuid":  "b143b7f1-ddba-4224-902a-b651c5752d4e",
+                                                                                "event_id":  "1233",
+                                                                                "distribution":  "5",
+                                                                                "timestamp":  "1777466549",
+                                                                                "comment":  "",
+                                                                                "sharing_group_id":  "0",
+                                                                                "deleted":  false,
+                                                                                "disable_correlation":  false,
+                                                                                "object_id":  "13959",
+                                                                                "object_relation":  "url",
+                                                                                "first_seen":  null,
+                                                                                "last_seen":  null,
+                                                                                "value":  "https://erpsync-120-f41cdcf813e4.herokuapp.com/",
+                                                                                "Galaxy":  [
+
+                                                                                           ],
+                                                                                "ShadowAttribute":  [
+
+                                                                                                    ]
+                                                                            }
+                                                                        ]
+                                                      },
+                                                      {
+                                                          "id":  "13960",
+                                                          "name":  "domain-ip",
+                                                          "meta-category":  "network",
+                                                          "description":  "A domain/hostname and IP address seen as a tuple in a specific time frame.",
+                                                          "template_uuid":  "43b3b146-77eb-4931-b4cc-b66c60f28734",
+                                                          "template_version":  "12",
+                                                          "event_id":  "1233",
+                                                          "uuid":  "e005acf0-fc66-4a12-a330-03a70850dba9",
+                                                          "timestamp":  "1777466559",
+                                                          "distribution":  "5",
+                                                          "sharing_group_id":  "0",
+                                                          "comment":  "Domain indicators",
+                                                          "deleted":  false,
+                                                          "first_seen":  null,
+                                                          "last_seen":  null,
+                                                          "ObjectReference":  [
+
+                                                                              ],
+                                                          "Attribute":  [
+                                                                            {
+                                                                                "id":  "1616355",
+                                                                                "type":  "hostname",
+                                                                                "category":  "Network activity",
+                                                                                "to_ids":  true,
+                                                                                "uuid":  "97489450-7af7-4e67-b250-6a27e99dffa1",
+                                                                                "event_id":  "1233",
+                                                                                "distribution":  "5",
+                                                                                "timestamp":  "1777466559",
+                                                                                "comment":  "",
+                                                                                "sharing_group_id":  "0",
+                                                                                "deleted":  false,
+                                                                                "disable_correlation":  false,
+                                                                                "object_id":  "13960",
+                                                                                "object_relation":  "hostname",
+                                                                                "first_seen":  null,
+                                                                                "last_seen":  null,
+                                                                                "value":  "erpapp-901-53f1ea72f036.herokuapp.com",
+                                                                                "Galaxy":  [
+
+                                                                                           ],
+                                                                                "ShadowAttribute":  [
+
+                                                                                                    ]
+                                                                            },
+                                                                            {
+                                                                                "id":  "1616356",
+                                                                                "type":  "hostname",
+                                                                                "category":  "Network activity",
+                                                                                "to_ids":  true,
+                                                                                "uuid":  "308c1628-0435-4823-a68e-73a2300ba8cb",
+                                                                                "event_id":  "1233",
+                                                                                "distribution":  "5",
+                                                                                "timestamp":  "1777466559",
+                                                                                "comment":  "",
+                                                                                "sharing_group_id":  "0",
+                                                                                "deleted":  false,
+                                                                                "disable_correlation":  false,
+                                                                                "object_id":  "13960",
+                                                                                "object_relation":  "hostname",
+                                                                                "first_seen":  null,
+                                                                                "last_seen":  null,
+                                                                                "value":  "crmassets-4a69a8e2b3ee.herokuapp.com",
+                                                                                "Galaxy":  [
+
+                                                                                           ],
+                                                                                "ShadowAttribute":  [
+
+                                                                                                    ]
+                                                                            },
+                                                                            {
+                                                                                "id":  "1616357",
+                                                                                "type":  "hostname",
+                                                                                "category":  "Network activity",
+                                                                                "to_ids":  true,
+                                                                                "uuid":  "f5d1c13e-43c5-43b6-8e60-a9b99544e19d",
+                                                                                "event_id":  "1233",
+                                                                                "distribution":  "5",
+                                                                                "timestamp":  "1777466559",
+                                                                                "comment":  "",
+                                                                                "sharing_group_id":  "0",
+                                                                                "deleted":  false,
+                                                                                "disable_correlation":  false,
+                                                                                "object_id":  "13960",
+                                                                                "object_relation":  "hostname",
+                                                                                "first_seen":  null,
+                                                                                "last_seen":  null,
+                                                                                "value":  "crmassets-351-0ac3da22f804.herokuapp.com",
+                                                                                "Galaxy":  [
+
+                                                                                           ],
+                                                                                "ShadowAttribute":  [
+
+                                                                                                    ]
+                                                                            },
+                                                                            {
+                                                                                "id":  "1616358",
+                                                                                "type":  "hostname",
+                                                                                "category":  "Network activity",
+                                                                                "to_ids":  true,
+                                                                                "uuid":  "e7db145d-cc97-4814-940b-5bdcf1aa203d",
+                                                                                "event_id":  "1233",
+                                                                                "distribution":  "5",
+                                                                                "timestamp":  "1777466559",
+                                                                                "comment":  "",
+                                                                                "sharing_group_id":  "0",
+                                                                                "deleted":  false,
+                                                                                "disable_correlation":  false,
+                                                                                "object_id":  "13960",
+                                                                                "object_relation":  "hostname",
+                                                                                "first_seen":  null,
+                                                                                "last_seen":  null,
+                                                                                "value":  "erpsync-120-f41cdcf813e4.herokuapp.com",
+                                                                                "Galaxy":  [
+
+                                                                                           ],
+                                                                                "ShadowAttribute":  [
+
+                                                                                                    ]
+                                                                            }
+                                                                        ]
+                                                      },
+                                                      {
+                                                          "id":  "13961",
+                                                          "name":  "file",
+                                                          "meta-category":  "file",
+                                                          "description":  "File object describing a file with meta-information",
+                                                          "template_uuid":  "688c46fb-5edb-40a3-8273-1af7923e2215",
+                                                          "template_version":  "26",
+                                                          "event_id":  "1233",
+                                                          "uuid":  "5f99699f-a593-4056-b3af-74050d827b23",
+                                                          "timestamp":  "1777466573",
+                                                          "distribution":  "5",
+                                                          "sharing_group_id":  "0",
+                                                          "comment":  "ZIP files",
+                                                          "deleted":  false,
+                                                          "first_seen":  null,
+                                                          "last_seen":  null,
+                                                          "ObjectReference":  [
+
+                                                                              ],
+                                                          "Attribute":  [
+                                                                            {
+                                                                                "id":  "1616359",
+                                                                                "type":  "sha256",
+                                                                                "category":  "Payload delivery",
+                                                                                "to_ids":  true,
+                                                                                "uuid":  "caa29401-bce3-4db2-9367-a08380fb1ae6",
+                                                                                "event_id":  "1233",
+                                                                                "distribution":  "5",
+                                                                                "timestamp":  "1777466573",
+                                                                                "comment":  "",
+                                                                                "sharing_group_id":  "0",
+                                                                                "deleted":  false,
+                                                                                "disable_correlation":  false,
+                                                                                "object_id":  "13961",
+                                                                                "object_relation":  "sha256",
+                                                                                "first_seen":  null,
+                                                                                "last_seen":  null,
+                                                                                "value":  "7f0395176e16d30025d9b31b9d0e6cced2cb583aea9b2ac4b5a72ddfe6cd2399",
+                                                                                "Galaxy":  [
+
+                                                                                           ],
+                                                                                "ShadowAttribute":  [
+
+                                                                                                    ]
+                                                                            },
+                                                                            {
+                                                                                "id":  "1616360",
+                                                                                "type":  "sha256",
+                                                                                "category":  "Payload delivery",
+                                                                                "to_ids":  true,
+                                                                                "uuid":  "6d3c5c3b-c42e-41b4-9301-7deadd1cd70f",
+                                                                                "event_id":  "1233",
+                                                                                "distribution":  "5",
+                                                                                "timestamp":  "1777466573",
+                                                                                "comment":  "",
+                                                                                "sharing_group_id":  "0",
+                                                                                "deleted":  false,
+                                                                                "disable_correlation":  false,
+                                                                                "object_id":  "13961",
+                                                                                "object_relation":  "sha256",
+                                                                                "first_seen":  null,
+                                                                                "last_seen":  null,
+                                                                                "value":  "c007cc2a99c3d73a45511561da824eeeb506fd54d55dc3d783d76b28a998428f",
+                                                                                "Galaxy":  [
+
+                                                                                           ],
+                                                                                "ShadowAttribute":  [
+
+                                                                                                    ]
+                                                                            },
+                                                                            {
+                                                                                "id":  "1616361",
+                                                                                "type":  "sha256",
+                                                                                "category":  "Payload delivery",
+                                                                                "to_ids":  true,
+                                                                                "uuid":  "faae26e0-405a-40e2-84cc-a859d3e94750",
+                                                                                "event_id":  "1233",
+                                                                                "distribution":  "5",
+                                                                                "timestamp":  "1777466573",
+                                                                                "comment":  "",
+                                                                                "sharing_group_id":  "0",
+                                                                                "deleted":  false,
+                                                                                "disable_correlation":  false,
+                                                                                "object_id":  "13961",
+                                                                                "object_relation":  "sha256",
+                                                                                "first_seen":  null,
+                                                                                "last_seen":  null,
+                                                                                "value":  "e9cc65ccd33a5e39d4ac74028aa2d8ddbedb32391c125c77c78b72286f46b700",
+                                                                                "Galaxy":  [
+
+                                                                                           ],
+                                                                                "ShadowAttribute":  [
+
+                                                                                                    ]
+                                                                            },
+                                                                            {
+                                                                                "id":  "1616362",
+                                                                                "type":  "sha256",
+                                                                                "category":  "Payload delivery",
+                                                                                "to_ids":  true,
+                                                                                "uuid":  "00183bb8-df7e-462d-b741-fa9f30a762ad",
+                                                                                "event_id":  "1233",
+                                                                                "distribution":  "5",
+                                                                                "timestamp":  "1777466573",
+                                                                                "comment":  "",
+                                                                                "sharing_group_id":  "0",
+                                                                                "deleted":  false,
+                                                                                "disable_correlation":  false,
+                                                                                "object_id":  "13961",
+                                                                                "object_relation":  "sha256",
+                                                                                "first_seen":  null,
+                                                                                "last_seen":  null,
+                                                                                "value":  "8db46fe1eb20caa85e99864a3119f5750358c8f363d482a04a72f668deac7cdd",
+                                                                                "Galaxy":  [
+
+                                                                                           ],
+                                                                                "ShadowAttribute":  [
+
+                                                                                                    ]
+                                                                            },
+                                                                            {
+                                                                                "id":  "1616363",
+                                                                                "type":  "sha256",
+                                                                                "category":  "Payload delivery",
+                                                                                "to_ids":  true,
+                                                                                "uuid":  "434ffda7-d13a-4fca-85d5-ee4bd2fcb4fa",
+                                                                                "event_id":  "1233",
+                                                                                "distribution":  "5",
+                                                                                "timestamp":  "1777466573",
+                                                                                "comment":  "",
+                                                                                "sharing_group_id":  "0",
+                                                                                "deleted":  false,
+                                                                                "disable_correlation":  false,
+                                                                                "object_id":  "13961",
+                                                                                "object_relation":  "sha256",
+                                                                                "first_seen":  null,
+                                                                                "last_seen":  null,
+                                                                                "value":  "b2a9396113ac8fdda00ad143038ab8d811fe6cce49a41bcf38fae09879b20fbd",
+                                                                                "Galaxy":  [
+
+                                                                                           ],
+                                                                                "ShadowAttribute":  [
+
+                                                                                                    ]
+                                                                            },
+                                                                            {
+                                                                                "id":  "1616364",
+                                                                                "type":  "sha256",
+                                                                                "category":  "Payload delivery",
+                                                                                "to_ids":  true,
+                                                                                "uuid":  "71031ee2-a91a-4e81-bd8e-7882f4e81b20",
+                                                                                "event_id":  "1233",
+                                                                                "distribution":  "5",
+                                                                                "timestamp":  "1777466573",
+                                                                                "comment":  "",
+                                                                                "sharing_group_id":  "0",
+                                                                                "deleted":  false,
+                                                                                "disable_correlation":  false,
+                                                                                "object_id":  "13961",
+                                                                                "object_relation":  "sha256",
+                                                                                "first_seen":  null,
+                                                                                "last_seen":  null,
+                                                                                "value":  "3b2efa313b1b292a29744e5e032e63cccfed4323731c9944541372213e4e8747",
+                                                                                "Galaxy":  [
+
+                                                                                           ],
+                                                                                "ShadowAttribute":  [
+
+                                                                                                    ]
+                                                                            },
+                                                                            {
+                                                                                "id":  "1616365",
+                                                                                "type":  "sha256",
+                                                                                "category":  "Payload delivery",
+                                                                                "to_ids":  true,
+                                                                                "uuid":  "0be3eaf8-5cce-4d60-9ce4-680f7ada5f94",
+                                                                                "event_id":  "1233",
+                                                                                "distribution":  "5",
+                                                                                "timestamp":  "1777466573",
+                                                                                "comment":  "",
+                                                                                "sharing_group_id":  "0",
+                                                                                "deleted":  false,
+                                                                                "disable_correlation":  false,
+                                                                                "object_id":  "13961",
+                                                                                "object_relation":  "sha256",
+                                                                                "first_seen":  null,
+                                                                                "last_seen":  null,
+                                                                                "value":  "f61cf89ee05f9ca7a136ef41cb841f85030f1c6a8c912e3953e9c0428f717cb2",
+                                                                                "Galaxy":  [
+
+                                                                                           ],
+                                                                                "ShadowAttribute":  [
+
+                                                                                                    ]
+                                                                            },
+                                                                            {
+                                                                                "id":  "1616366",
+                                                                                "type":  "sha256",
+                                                                                "category":  "Payload delivery",
+                                                                                "to_ids":  true,
+                                                                                "uuid":  "d64c2c96-2bde-42aa-bdda-491a01a5ad78",
+                                                                                "event_id":  "1233",
+                                                                                "distribution":  "5",
+                                                                                "timestamp":  "1777466573",
+                                                                                "comment":  "",
+                                                                                "sharing_group_id":  "0",
+                                                                                "deleted":  false,
+                                                                                "disable_correlation":  false,
+                                                                                "object_id":  "13961",
+                                                                                "object_relation":  "sha256",
+                                                                                "first_seen":  null,
+                                                                                "last_seen":  null,
+                                                                                "value":  "4b989684dd7a411ef18f3b6549777d7f136a361fc504e9ab69027d54d5476bbe",
+                                                                                "Galaxy":  [
+
+                                                                                           ],
+                                                                                "ShadowAttribute":  [
+
+                                                                                                    ]
+                                                                            },
+                                                                            {
+                                                                                "id":  "1616367",
+                                                                                "type":  "sha256",
+                                                                                "category":  "Payload delivery",
+                                                                                "to_ids":  true,
+                                                                                "uuid":  "af40e21f-0b28-4f19-aea6-e9b39bfada2c",
+                                                                                "event_id":  "1233",
+                                                                                "distribution":  "5",
+                                                                                "timestamp":  "1777466573",
+                                                                                "comment":  "",
+                                                                                "sharing_group_id":  "0",
+                                                                                "deleted":  false,
+                                                                                "disable_correlation":  false,
+                                                                                "object_id":  "13961",
+                                                                                "object_relation":  "sha256",
+                                                                                "first_seen":  null,
+                                                                                "last_seen":  null,
+                                                                                "value":  "402f86dafdcadb4e0529d750167cb36bc54804578a5947a84984f24ba3285d5b",
+                                                                                "Galaxy":  [
+
+                                                                                           ],
+                                                                                "ShadowAttribute":  [
+
+                                                                                                    ]
+                                                                            }
+                                                                        ]
+                                                      },
+                                                      {
+                                                          "id":  "13962",
+                                                          "name":  "file",
+                                                          "meta-category":  "file",
+                                                          "description":  "File object describing a file with meta-information",
+                                                          "template_uuid":  "688c46fb-5edb-40a3-8273-1af7923e2215",
+                                                          "template_version":  "26",
+                                                          "event_id":  "1233",
+                                                          "uuid":  "d25b7d5d-a749-4f42-8dfe-13a8a201e4a9",
+                                                          "timestamp":  "1777466586",
+                                                          "distribution":  "5",
+                                                          "sharing_group_id":  "0",
+                                                          "comment":  "LNK files",
+                                                          "deleted":  false,
+                                                          "first_seen":  null,
+                                                          "last_seen":  null,
+                                                          "ObjectReference":  [
+
+                                                                              ],
+                                                          "Attribute":  [
+                                                                            {
+                                                                                "id":  "1616368",
+                                                                                "type":  "sha256",
+                                                                                "category":  "Payload delivery",
+                                                                                "to_ids":  true,
+                                                                                "uuid":  "a6179c1b-4e2d-4707-a7ed-d73d851b0447",
+                                                                                "event_id":  "1233",
+                                                                                "distribution":  "5",
+                                                                                "timestamp":  "1777466586",
+                                                                                "comment":  "",
+                                                                                "sharing_group_id":  "0",
+                                                                                "deleted":  false,
+                                                                                "disable_correlation":  false,
+                                                                                "object_id":  "13962",
+                                                                                "object_relation":  "sha256",
+                                                                                "first_seen":  null,
+                                                                                "last_seen":  null,
+                                                                                "value":  "08d72e73e33093a6be1b571816cb82ed04749c9dee8e16d43a298dcb4a70f322",
+                                                                                "Galaxy":  [
+
+                                                                                           ],
+                                                                                "ShadowAttribute":  [
+
+                                                                                                    ]
+                                                                            },
+                                                                            {
+                                                                                "id":  "1616369",
+                                                                                "type":  "sha256",
+                                                                                "category":  "Payload delivery",
+                                                                                "to_ids":  true,
+                                                                                "uuid":  "0f58de81-8a97-4986-a1f8-41839379a624",
+                                                                                "event_id":  "1233",
+                                                                                "distribution":  "5",
+                                                                                "timestamp":  "1777466586",
+                                                                                "comment":  "",
+                                                                                "sharing_group_id":  "0",
+                                                                                "deleted":  false,
+                                                                                "disable_correlation":  false,
+                                                                                "object_id":  "13962",
+                                                                                "object_relation":  "sha256",
+                                                                                "first_seen":  null,
+                                                                                "last_seen":  null,
+                                                                                "value":  "b18b5e566f5c71008298fd97cef09a12e2a74efa9436871986c224376e2a5ed2",
+                                                                                "Galaxy":  [
+
+                                                                                           ],
+                                                                                "ShadowAttribute":  [
+
+                                                                                                    ]
+                                                                            },
+                                                                            {
+                                                                                "id":  "1616370",
+                                                                                "type":  "sha256",
+                                                                                "category":  "Payload delivery",
+                                                                                "to_ids":  true,
+                                                                                "uuid":  "be200500-3ac2-4029-b1b8-46544f28a99d",
+                                                                                "event_id":  "1233",
+                                                                                "distribution":  "5",
+                                                                                "timestamp":  "1777466586",
+                                                                                "comment":  "",
+                                                                                "sharing_group_id":  "0",
+                                                                                "deleted":  false,
+                                                                                "disable_correlation":  false,
+                                                                                "object_id":  "13962",
+                                                                                "object_relation":  "sha256",
+                                                                                "first_seen":  null,
+                                                                                "last_seen":  null,
+                                                                                "value":  "26e30ddb54be3aea99f59892ee4732dbfb9d2a97445e6038712fece411339c97",
+                                                                                "Galaxy":  [
+
+                                                                                           ],
+                                                                                "ShadowAttribute":  [
+
+                                                                                                    ]
+                                                                            },
+                                                                            {
+                                                                                "id":  "1616371",
+                                                                                "type":  "sha256",
+                                                                                "category":  "Payload delivery",
+                                                                                "to_ids":  true,
+                                                                                "uuid":  "53192ee7-16ec-4790-9a89-9668f19cd7e0",
+                                                                                "event_id":  "1233",
+                                                                                "distribution":  "5",
+                                                                                "timestamp":  "1777466586",
+                                                                                "comment":  "",
+                                                                                "sharing_group_id":  "0",
+                                                                                "deleted":  false,
+                                                                                "disable_correlation":  false,
+                                                                                "object_id":  "13962",
+                                                                                "object_relation":  "sha256",
+                                                                                "first_seen":  null,
+                                                                                "last_seen":  null,
+                                                                                "value":  "ad0398af16ad08727dcd7e3198833f360ecff030ca14186415a465b877fa2b64",
+                                                                                "Galaxy":  [
+
+                                                                                           ],
+                                                                                "ShadowAttribute":  [
+
+                                                                                                    ]
+                                                                            },
+                                                                            {
+                                                                                "id":  "1616372",
+                                                                                "type":  "sha256",
+                                                                                "category":  "Payload delivery",
+                                                                                "to_ids":  true,
+                                                                                "uuid":  "886f4527-bdf2-4a08-9d05-8e93a5e01e9f",
+                                                                                "event_id":  "1233",
+                                                                                "distribution":  "5",
+                                                                                "timestamp":  "1777466586",
+                                                                                "comment":  "",
+                                                                                "sharing_group_id":  "0",
+                                                                                "deleted":  false,
+                                                                                "disable_correlation":  false,
+                                                                                "object_id":  "13962",
+                                                                                "object_relation":  "sha256",
+                                                                                "first_seen":  null,
+                                                                                "last_seen":  null,
+                                                                                "value":  "bb72f69621da585bdb03ab364b2cdcb572221b4f683ead179c1ca6c453ddb40f",
+                                                                                "Galaxy":  [
+
+                                                                                           ],
+                                                                                "ShadowAttribute":  [
+
+                                                                                                    ]
+                                                                            },
+                                                                            {
+                                                                                "id":  "1616373",
+                                                                                "type":  "sha256",
+                                                                                "category":  "Payload delivery",
+                                                                                "to_ids":  true,
+                                                                                "uuid":  "9137929c-8699-4f81-b1de-d86f7de3cc80",
+                                                                                "event_id":  "1233",
+                                                                                "distribution":  "5",
+                                                                                "timestamp":  "1777466586",
+                                                                                "comment":  "",
+                                                                                "sharing_group_id":  "0",
+                                                                                "deleted":  false,
+                                                                                "disable_correlation":  false,
+                                                                                "object_id":  "13962",
+                                                                                "object_relation":  "sha256",
+                                                                                "first_seen":  null,
+                                                                                "last_seen":  null,
+                                                                                "value":  "9206217d98f36f41a2785930dba26ba3b5aebf64ee766807bbab8829ffda08ce",
+                                                                                "Galaxy":  [
+
+                                                                                           ],
+                                                                                "ShadowAttribute":  [
+
+                                                                                                    ]
+                                                                            },
+                                                                            {
+                                                                                "id":  "1616374",
+                                                                                "type":  "sha256",
+                                                                                "category":  "Payload delivery",
+                                                                                "to_ids":  true,
+                                                                                "uuid":  "1db493d1-01ab-44e7-abc5-9a62f29589eb",
+                                                                                "event_id":  "1233",
+                                                                                "distribution":  "5",
+                                                                                "timestamp":  "1777466586",
+                                                                                "comment":  "",
+                                                                                "sharing_group_id":  "0",
+                                                                                "deleted":  false,
+                                                                                "disable_correlation":  false,
+                                                                                "object_id":  "13962",
+                                                                                "object_relation":  "sha256",
+                                                                                "first_seen":  null,
+                                                                                "last_seen":  null,
+                                                                                "value":  "fab03615d94770219ff36f15616f42376991c887d6da2d1c6e3c9ad58f669474",
+                                                                                "Galaxy":  [
+
+                                                                                           ],
+                                                                                "ShadowAttribute":  [
+
+                                                                                                    ]
+                                                                            },
+                                                                            {
+                                                                                "id":  "1616375",
+                                                                                "type":  "sha256",
+                                                                                "category":  "Payload delivery",
+                                                                                "to_ids":  true,
+                                                                                "uuid":  "94efdf0f-c239-46c3-b609-2b49b2259a43",
+                                                                                "event_id":  "1233",
+                                                                                "distribution":  "5",
+                                                                                "timestamp":  "1777466586",
+                                                                                "comment":  "",
+                                                                                "sharing_group_id":  "0",
+                                                                                "deleted":  false,
+                                                                                "disable_correlation":  false,
+                                                                                "object_id":  "13962",
+                                                                                "object_relation":  "sha256",
+                                                                                "first_seen":  null,
+                                                                                "last_seen":  null,
+                                                                                "value":  "e67fd4c4c731d1371048c0989026e95238d92f2d27f337d0d1866a24436418f2",
+                                                                                "Galaxy":  [
+
+                                                                                           ],
+                                                                                "ShadowAttribute":  [
+
+                                                                                                    ]
+                                                                            }
+                                                                        ]
+                                                      },
+                                                      {
+                                                          "id":  "13963",
+                                                          "name":  "file",
+                                                          "meta-category":  "file",
+                                                          "description":  "File object describing a file with meta-information",
+                                                          "template_uuid":  "688c46fb-5edb-40a3-8273-1af7923e2215",
+                                                          "template_version":  "26",
+                                                          "event_id":  "1233",
+                                                          "uuid":  "934019d6-459b-4be3-ab45-796e0ce365ec",
+                                                          "timestamp":  "1777466603",
+                                                          "distribution":  "5",
+                                                          "sharing_group_id":  "0",
+                                                          "comment":  "Powershell Loader",
+                                                          "deleted":  false,
+                                                          "first_seen":  null,
+                                                          "last_seen":  null,
+                                                          "ObjectReference":  [
+
+                                                                              ],
+                                                          "Attribute":  [
+                                                                            {
+                                                                                "id":  "1616376",
+                                                                                "type":  "sha256",
+                                                                                "category":  "Payload delivery",
+                                                                                "to_ids":  true,
+                                                                                "uuid":  "87e83988-77c3-4bb3-b677-be72b8bfa459",
+                                                                                "event_id":  "1233",
+                                                                                "distribution":  "5",
+                                                                                "timestamp":  "1777466603",
+                                                                                "comment":  "",
+                                                                                "sharing_group_id":  "0",
+                                                                                "deleted":  false,
+                                                                                "disable_correlation":  false,
+                                                                                "object_id":  "13963",
+                                                                                "object_relation":  "sha256",
+                                                                                "first_seen":  null,
+                                                                                "last_seen":  null,
+                                                                                "value":  "5fccb6b2f34a8b8e9a3f3435a7f121e7fffd2ec463c58f46e037129c63f08628",
+                                                                                "Galaxy":  [
+
+                                                                                           ],
+                                                                                "ShadowAttribute":  [
+
+                                                                                                    ]
+                                                                            },
+                                                                            {
+                                                                                "id":  "1616377",
+                                                                                "type":  "sha256",
+                                                                                "category":  "Payload delivery",
+                                                                                "to_ids":  true,
+                                                                                "uuid":  "82be8749-f752-433b-bfdc-ba7c7ba32022",
+                                                                                "event_id":  "1233",
+                                                                                "distribution":  "5",
+                                                                                "timestamp":  "1777466603",
+                                                                                "comment":  "",
+                                                                                "sharing_group_id":  "0",
+                                                                                "deleted":  false,
+                                                                                "disable_correlation":  false,
+                                                                                "object_id":  "13963",
+                                                                                "object_relation":  "sha256",
+                                                                                "first_seen":  null,
+                                                                                "last_seen":  null,
+                                                                                "value":  "ec63601647fa3439ca69ec8cb213022807509c7a3a7bb71459f0b061e7004564",
+                                                                                "Galaxy":  [
+
+                                                                                           ],
+                                                                                "ShadowAttribute":  [
+
+                                                                                                    ]
+                                                                            },
+                                                                            {
+                                                                                "id":  "1616378",
+                                                                                "type":  "sha256",
+                                                                                "category":  "Payload delivery",
+                                                                                "to_ids":  true,
+                                                                                "uuid":  "173e14f2-fc7c-46bd-8e54-07295c8137cc",
+                                                                                "event_id":  "1233",
+                                                                                "distribution":  "5",
+                                                                                "timestamp":  "1777466603",
+                                                                                "comment":  "",
+                                                                                "sharing_group_id":  "0",
+                                                                                "deleted":  false,
+                                                                                "disable_correlation":  false,
+                                                                                "object_id":  "13963",
+                                                                                "object_relation":  "sha256",
+                                                                                "first_seen":  null,
+                                                                                "last_seen":  null,
+                                                                                "value":  "b88a69ee29e1421937d8f38ecc132fdd9be6620ee1350f7204e8d08be7b0212a",
+                                                                                "Galaxy":  [
+
+                                                                                           ],
+                                                                                "ShadowAttribute":  [
+
+                                                                                                    ]
+                                                                            },
+                                                                            {
+                                                                                "id":  "1616379",
+                                                                                "type":  "sha256",
+                                                                                "category":  "Payload delivery",
+                                                                                "to_ids":  true,
+                                                                                "uuid":  "d60d9172-9d1d-46a8-a6d6-713a6498c7dc",
+                                                                                "event_id":  "1233",
+                                                                                "distribution":  "5",
+                                                                                "timestamp":  "1777466603",
+                                                                                "comment":  "",
+                                                                                "sharing_group_id":  "0",
+                                                                                "deleted":  false,
+                                                                                "disable_correlation":  false,
+                                                                                "object_id":  "13963",
+                                                                                "object_relation":  "sha256",
+                                                                                "first_seen":  null,
+                                                                                "last_seen":  null,
+                                                                                "value":  "897d5abbc05ded1b76ec10cb911f1342345fc85eedd393e3928cd3c2d1a0a853",
+                                                                                "Galaxy":  [
+
+                                                                                           ],
+                                                                                "ShadowAttribute":  [
+
+                                                                                                    ]
+                                                                            },
+                                                                            {
+                                                                                "id":  "1616380",
+                                                                                "type":  "sha256",
+                                                                                "category":  "Payload delivery",
+                                                                                "to_ids":  true,
+                                                                                "uuid":  "17845362-bb10-4cd6-9677-9b664633442f",
+                                                                                "event_id":  "1233",
+                                                                                "distribution":  "5",
+                                                                                "timestamp":  "1777466603",
+                                                                                "comment":  "",
+                                                                                "sharing_group_id":  "0",
+                                                                                "deleted":  false,
+                                                                                "disable_correlation":  false,
+                                                                                "object_id":  "13963",
+                                                                                "object_relation":  "sha256",
+                                                                                "first_seen":  null,
+                                                                                "last_seen":  null,
+                                                                                "value":  "c4068c70f097dc39785e87e3a9096db529410bc0ae3109c552d0e873cf04a911",
+                                                                                "Galaxy":  [
+
+                                                                                           ],
+                                                                                "ShadowAttribute":  [
+
+                                                                                                    ]
+                                                                            },
+                                                                            {
+                                                                                "id":  "1616381",
+                                                                                "type":  "sha256",
+                                                                                "category":  "Payload delivery",
+                                                                                "to_ids":  true,
+                                                                                "uuid":  "35970181-be29-42e9-a86b-a43a4d34f545",
+                                                                                "event_id":  "1233",
+                                                                                "distribution":  "5",
+                                                                                "timestamp":  "1777466603",
+                                                                                "comment":  "",
+                                                                                "sharing_group_id":  "0",
+                                                                                "deleted":  false,
+                                                                                "disable_correlation":  false,
+                                                                                "object_id":  "13963",
+                                                                                "object_relation":  "sha256",
+                                                                                "first_seen":  null,
+                                                                                "last_seen":  null,
+                                                                                "value":  "5a0f7ce7ea43810dc27c04d6aa0f7a174beedf350ea5f410c8ccad068c9d94dc",
+                                                                                "Galaxy":  [
+
+                                                                                           ],
+                                                                                "ShadowAttribute":  [
+
+                                                                                                    ]
+                                                                            },
+                                                                            {
+                                                                                "id":  "1616382",
+                                                                                "type":  "sha256",
+                                                                                "category":  "Payload delivery",
+                                                                                "to_ids":  true,
+                                                                                "uuid":  "8e984745-af54-4b66-be15-9103af2ce2bc",
+                                                                                "event_id":  "1233",
+                                                                                "distribution":  "5",
+                                                                                "timestamp":  "1777466603",
+                                                                                "comment":  "",
+                                                                                "sharing_group_id":  "0",
+                                                                                "deleted":  false,
+                                                                                "disable_correlation":  false,
+                                                                                "object_id":  "13963",
+                                                                                "object_relation":  "sha256",
+                                                                                "first_seen":  null,
+                                                                                "last_seen":  null,
+                                                                                "value":  "d2cfd96346c4efeb75d54d79de783831386dbf44203a9df291baf56082d1fe07",
+                                                                                "Galaxy":  [
+
+                                                                                           ],
+                                                                                "ShadowAttribute":  [
+
+                                                                                                    ]
+                                                                            },
+                                                                            {
+                                                                                "id":  "1616383",
+                                                                                "type":  "sha256",
+                                                                                "category":  "Payload delivery",
+                                                                                "to_ids":  true,
+                                                                                "uuid":  "5947a441-ddfd-4080-a6d2-224f61dc8955",
+                                                                                "event_id":  "1233",
+                                                                                "distribution":  "5",
+                                                                                "timestamp":  "1777466603",
+                                                                                "comment":  "",
+                                                                                "sharing_group_id":  "0",
+                                                                                "deleted":  false,
+                                                                                "disable_correlation":  false,
+                                                                                "object_id":  "13963",
+                                                                                "object_relation":  "sha256",
+                                                                                "first_seen":  null,
+                                                                                "last_seen":  null,
+                                                                                "value":  "95671f1e3a1d7cd4f3998406599c80e8ea8c930b9b50f2b50c95d1e105b0761d",
+                                                                                "Galaxy":  [
+
+                                                                                           ],
+                                                                                "ShadowAttribute":  [
+
+                                                                                                    ]
+                                                                            }
+                                                                        ]
+                                                      },
+                                                      {
+                                                          "id":  "13964",
+                                                          "name":  "file",
+                                                          "meta-category":  "file",
+                                                          "description":  "File object describing a file with meta-information",
+                                                          "template_uuid":  "688c46fb-5edb-40a3-8273-1af7923e2215",
+                                                          "template_version":  "26",
+                                                          "event_id":  "1233",
+                                                          "uuid":  "d6f51622-b166-4c9e-b5ed-00b08949baba",
+                                                          "timestamp":  "1777466617",
+                                                          "distribution":  "5",
+                                                          "sharing_group_id":  "0",
+                                                          "comment":  "PowMix Botnet",
+                                                          "deleted":  false,
+                                                          "first_seen":  null,
+                                                          "last_seen":  null,
+                                                          "ObjectReference":  [
+
+                                                                              ],
+                                                          "Attribute":  [
+                                                                            {
+                                                                                "id":  "1616384",
+                                                                                "type":  "sha256",
+                                                                                "category":  "Payload delivery",
+                                                                                "to_ids":  true,
+                                                                                "uuid":  "93a79d76-2c07-49b8-91d2-6bf129a4bae7",
+                                                                                "event_id":  "1233",
+                                                                                "distribution":  "5",
+                                                                                "timestamp":  "1777466617",
+                                                                                "comment":  "",
+                                                                                "sharing_group_id":  "0",
+                                                                                "deleted":  false,
+                                                                                "disable_correlation":  false,
+                                                                                "object_id":  "13964",
+                                                                                "object_relation":  "sha256",
+                                                                                "first_seen":  null,
+                                                                                "last_seen":  null,
+                                                                                "value":  "cf503f867c3604c58fbaf86cb9d91846a004c6d92c9c558e6e49e3b6a9fbffa1",
+                                                                                "Galaxy":  [
+
+                                                                                           ],
+                                                                                "ShadowAttribute":  [
+
+                                                                                                    ]
+                                                                            },
+                                                                            {
+                                                                                "id":  "1616385",
+                                                                                "type":  "sha256",
+                                                                                "category":  "Payload delivery",
+                                                                                "to_ids":  true,
+                                                                                "uuid":  "2caed1a2-4cbd-49fc-a859-466a9db6d921",
+                                                                                "event_id":  "1233",
+                                                                                "distribution":  "5",
+                                                                                "timestamp":  "1777466617",
+                                                                                "comment":  "",
+                                                                                "sharing_group_id":  "0",
+                                                                                "deleted":  false,
+                                                                                "disable_correlation":  false,
+                                                                                "object_id":  "13964",
+                                                                                "object_relation":  "sha256",
+                                                                                "first_seen":  null,
+                                                                                "last_seen":  null,
+                                                                                "value":  "1735f9f9b366d1d52e8852931083c9db4cfcc06ffb99a873192d0ed8fc073e55",
+                                                                                "Galaxy":  [
+
+                                                                                           ],
+                                                                                "ShadowAttribute":  [
+
+                                                                                                    ]
+                                                                            },
+                                                                            {
+                                                                                "id":  "1616386",
+                                                                                "type":  "sha256",
+                                                                                "category":  "Payload delivery",
+                                                                                "to_ids":  true,
+                                                                                "uuid":  "fa775e03-dc82-4af4-8502-876cb1464225",
+                                                                                "event_id":  "1233",
+                                                                                "distribution":  "5",
+                                                                                "timestamp":  "1777466617",
+                                                                                "comment":  "",
+                                                                                "sharing_group_id":  "0",
+                                                                                "deleted":  false,
+                                                                                "disable_correlation":  false,
+                                                                                "object_id":  "13964",
+                                                                                "object_relation":  "sha256",
+                                                                                "first_seen":  null,
+                                                                                "last_seen":  null,
+                                                                                "value":  "8a76d47e0e0fb2ccda6caedb6ef14361704985b78b7d1653030b412441275c22",
+                                                                                "Galaxy":  [
+
+                                                                                           ],
+                                                                                "ShadowAttribute":  [
+
+                                                                                                    ]
+                                                                            },
+                                                                            {
+                                                                                "id":  "1616387",
+                                                                                "type":  "sha256",
+                                                                                "category":  "Payload delivery",
+                                                                                "to_ids":  true,
+                                                                                "uuid":  "abc285c5-412f-40b6-b6cc-a5856ae959c4",
+                                                                                "event_id":  "1233",
+                                                                                "distribution":  "5",
+                                                                                "timestamp":  "1777466617",
+                                                                                "comment":  "",
+                                                                                "sharing_group_id":  "0",
+                                                                                "deleted":  false,
+                                                                                "disable_correlation":  false,
+                                                                                "object_id":  "13964",
+                                                                                "object_relation":  "sha256",
+                                                                                "first_seen":  null,
+                                                                                "last_seen":  null,
+                                                                                "value":  "ba0fcc8b2f836984932733c83fac13f1ce6fd91e7e85231b7effebb55d9e3b50",
+                                                                                "Galaxy":  [
+
+                                                                                           ],
+                                                                                "ShadowAttribute":  [
+
+                                                                                                    ]
+                                                                            },
+                                                                            {
+                                                                                "id":  "1616388",
+                                                                                "type":  "sha256",
+                                                                                "category":  "Payload delivery",
+                                                                                "to_ids":  true,
+                                                                                "uuid":  "2cad8ab5-a399-469f-a45f-81eacbdb9c65",
+                                                                                "event_id":  "1233",
+                                                                                "distribution":  "5",
+                                                                                "timestamp":  "1777466617",
+                                                                                "comment":  "",
+                                                                                "sharing_group_id":  "0",
+                                                                                "deleted":  false,
+                                                                                "disable_correlation":  false,
+                                                                                "object_id":  "13964",
+                                                                                "object_relation":  "sha256",
+                                                                                "first_seen":  null,
+                                                                                "last_seen":  null,
+                                                                                "value":  "db56c5b2e0242e5ed24f6b41dc685a1ba531dda38a96e9812e9fa6dda73f5da1",
+                                                                                "Galaxy":  [
+
+                                                                                           ],
+                                                                                "ShadowAttribute":  [
+
+                                                                                                    ]
+                                                                            },
+                                                                            {
+                                                                                "id":  "1616389",
+                                                                                "type":  "sha256",
+                                                                                "category":  "Payload delivery",
+                                                                                "to_ids":  true,
+                                                                                "uuid":  "e1be9342-246a-4e7d-9437-08b126361149",
+                                                                                "event_id":  "1233",
+                                                                                "distribution":  "5",
+                                                                                "timestamp":  "1777466617",
+                                                                                "comment":  "",
+                                                                                "sharing_group_id":  "0",
+                                                                                "deleted":  false,
+                                                                                "disable_correlation":  false,
+                                                                                "object_id":  "13964",
+                                                                                "object_relation":  "sha256",
+                                                                                "first_seen":  null,
+                                                                                "last_seen":  null,
+                                                                                "value":  "6d97ce6d630538c99730f30045ec96e645efdc0ef2f97847e74cf30b88ec64f9",
+                                                                                "Galaxy":  [
+
+                                                                                           ],
+                                                                                "ShadowAttribute":  [
+
+                                                                                                    ]
+                                                                            },
+                                                                            {
+                                                                                "id":  "1616390",
+                                                                                "type":  "sha256",
+                                                                                "category":  "Payload delivery",
+                                                                                "to_ids":  true,
+                                                                                "uuid":  "1e87d6f4-fb62-447d-96e3-20c45c39e64a",
+                                                                                "event_id":  "1233",
+                                                                                "distribution":  "5",
+                                                                                "timestamp":  "1777466617",
+                                                                                "comment":  "",
+                                                                                "sharing_group_id":  "0",
+                                                                                "deleted":  false,
+                                                                                "disable_correlation":  false,
+                                                                                "object_id":  "13964",
+                                                                                "object_relation":  "sha256",
+                                                                                "first_seen":  null,
+                                                                                "last_seen":  null,
+                                                                                "value":  "5d38bfc4a57d90c82ffd38373c8f357abc110b4e4de4085afc6a193f6d264e99",
+                                                                                "Galaxy":  [
+
+                                                                                           ],
+                                                                                "ShadowAttribute":  [
+
+                                                                                                    ]
+                                                                            },
+                                                                            {
+                                                                                "id":  "1616391",
+                                                                                "type":  "sha256",
+                                                                                "category":  "Payload delivery",
+                                                                                "to_ids":  true,
+                                                                                "uuid":  "2aaf527b-98f6-4093-942e-dfae60912fcc",
+                                                                                "event_id":  "1233",
+                                                                                "distribution":  "5",
+                                                                                "timestamp":  "1777466617",
+                                                                                "comment":  "",
+                                                                                "sharing_group_id":  "0",
+                                                                                "deleted":  false,
+                                                                                "disable_correlation":  false,
+                                                                                "object_id":  "13964",
+                                                                                "object_relation":  "sha256",
+                                                                                "first_seen":  null,
+                                                                                "last_seen":  null,
+                                                                                "value":  "47dfcb0dfe1f8d8918579087e7a77e6809622df4b47e344637fbdeb4b61a7d5b",
+                                                                                "Galaxy":  [
+
+                                                                                           ],
+                                                                                "ShadowAttribute":  [
+
+                                                                                                    ]
+                                                                            }
+                                                                        ]
+                                                      },
+                                                      {
+                                                          "id":  "13965",
+                                                          "name":  "report",
+                                                          "meta-category":  "misc",
+                                                          "description":  "Report object to describe a report along with its metadata.",
+                                                          "template_uuid":  "70a68471-df22-4e3f-aa1a-5a3be19f82df",
+                                                          "template_version":  "9",
+                                                          "event_id":  "1233",
+                                                          "uuid":  "eef22006-b527-4761-bc2f-bfca9df7448e",
+                                                          "timestamp":  "1777466630",
+                                                          "distribution":  "5",
+                                                          "sharing_group_id":  "0",
+                                                          "comment":  "Report",
+                                                          "deleted":  false,
+                                                          "first_seen":  null,
+                                                          "last_seen":  null,
+                                                          "ObjectReference":  [
+
+                                                                              ],
+                                                          "Attribute":  [
+                                                                            {
+                                                                                "id":  "1616392",
+                                                                                "type":  "link",
+                                                                                "category":  "External analysis",
+                                                                                "to_ids":  false,
+                                                                                "uuid":  "4b7f4f88-ce5a-469d-89da-fc162b95635b",
+                                                                                "event_id":  "1233",
+                                                                                "distribution":  "5",
+                                                                                "timestamp":  "1777466630",
+                                                                                "comment":  "",
+                                                                                "sharing_group_id":  "0",
+                                                                                "deleted":  false,
+                                                                                "disable_correlation":  true,
+                                                                                "object_id":  "13965",
+                                                                                "object_relation":  "link",
+                                                                                "first_seen":  null,
+                                                                                "last_seen":  null,
+                                                                                "value":  "https://raw.githubusercontent.com/Cisco-Talos/IOCs/refs/heads/main/2026/04/powmix-botnet-targets-czech-workforce.txt",
+                                                                                "Galaxy":  [
+
+                                                                                           ],
+                                                                                "ShadowAttribute":  [
+
+                                                                                                    ]
+                                                                            }
+                                                                        ]
+                                                      }
+                                                  ],
+                                       "EventReport":  [
+
+                                                       ],
+                                       "CryptographicKey":  [
+
+                                                            ]
+                                   }
+                     }
+                 ]
+}

@@ -1,0 +1,7 @@
+# Vlastne regularne pravidla.
+# Format: <name>:<regex>
+# Typ vystupu bude zobrazeny ako typ custom:<name>
+#
+# Priklad:
+# btc-wallet:\b(?:bc1|[13])[a-zA-HJ-NP-Z0-9]{20,60}\b
+npm-package:(?:^|[\s"'=:/])packages\.npm\.org\/((?:@[^\/\s"'<>]+\/)?[^\/\s"'<>?#]+)

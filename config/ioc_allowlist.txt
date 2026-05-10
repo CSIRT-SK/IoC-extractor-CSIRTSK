@@ -1,0 +1,11 @@
+# Vlastny IoC allowlist.
+# Format: <ioc-type>:<value>
+# Podporovane typy: url, ip-dst, domain, email-src, md5, sha1, sha256
+# Riadky zacinajuce # su ignorovane.
+
+# Priklady:
+# domain:github.com
+# domain:packages.npm.org
+# email-src:user@proton.me
+# url:https://vendor.example/wp-content/report.pdf
+url:packages.npm.org/product0
