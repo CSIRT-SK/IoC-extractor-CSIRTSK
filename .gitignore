@@ -2,7 +2,7 @@
 .env
 
 # Config files
-app_config.json
+config/app_config.json
 config/ioc_allowlist.txt
 config/ioc_custom_regex.txt
 config/ioc_exceptions.txt
@@ -14,7 +14,8 @@ IOC_analyst/*.json
 .venv/
 
 # Evaluation directory
-outputs/evaluation/*
+outputs/evaluation/*.md
+outputs/evaluation/*.json
 
 # Cache files
 __pycache__/

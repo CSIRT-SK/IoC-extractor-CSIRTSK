@@ -1,0 +1,19 @@
+{
+  "misp": {
+    "distribution": 0,
+    "sharing_group_id": 0,
+    "analysis": 0,
+    "publish_event": false,
+    "allow_xdr_export": false,
+    "enrich_event": false,
+    "dissect_urls": false
+  },
+
+  "report": {
+    "print_confidence": false,
+    "print_validation_report": false,
+    "print_attribute_preview": false,
+    "print_metrics": false,
+    "print_quick_preview": false
+  }
+}
