@@ -28,10 +28,10 @@ def load_input_file(path: str | Path) -> InputDocument:
     elif suffix == ".pdf":
         text = read_pdf_text(file_path)
     else:
-        raise ValueError("Podporovane su iba CSV, TXT a PDF subory.")
+        raise ValueError("Only CSV, TXT and PDF files are currently supported")
 
     if not text.strip():
-        raise ValueError(f"Nepodarilo sa extrahovat text zo suboru: {file_path}")
+        raise ValueError(f"Could not extract text from file: {file_path}")
 
     return InputDocument(
         source=str(file_path.resolve()),
@@ -68,7 +68,7 @@ def read_pdf_text(path: Path) -> str:
         from pypdf import PdfReader
     except ImportError as exc:
         raise RuntimeError(
-            "PDF extrakcia vyzaduje balik pypdf. Spust: pip install -r requirements.txt"
+            "Extraction from PDF files requires the 'pypdf' module. It is recommended to run command: pip install -r requirements.txt"
         ) from exc
 
     reader = PdfReader(str(path))

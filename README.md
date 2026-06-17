@@ -1,26 +1,28 @@
-# IoC Extractor to MISP
+# IoC Processor and Extractor to MISP
 
-CLI aplikácia na extrakciu indikátorov kompromitácie (IoC) z verejných zdrojov a ich import do platformy MISP. Podporuje webové články, TXT, CSV a PDF súbory, validáciu, normalizáciu, deduplikáciu, allowlist/exceptions pravidlá, export do JSON a potvrdený import do MISP cez PyMISP.
+*All credit goes to the creator of this tool - [Kristian Kapec](https://github.com/Kristian-Kapec/BP-IoC-extractor)*
 
-## Funkcie
+CLI application for extracting Indicators of Compromise (IoCs) from public sources and importing them into the MISP platform. Supports web articles, TXT, CSV, and PDF files, validation, normalization, deduplication, allowlist/exceptions rules, JSON export, and confirmed import into MISP through PyMISP.
 
-- extrakcia IoC z URL, TXT, CSV a PDF vstupov,
-- podporované IoC typy: URL, IPv4 adresy, domény, e-mailové adresy, MD5, SHA1 a SHA256,
-- podpora custom regex patternov načítaných z `ioc_custom_regex.txt`,
-- refang defangovaných hodnôt, napríklad `hxxp://`, `hxxps[://]`, `[.]`, `[@]`,
-- validácia, normalizácia a deduplikácia hodnôt,
-- allowlist a exceptions pravidlá pre jemné doladenie výsledkov,
-- pokus o preferovanie IoC sekcie článku pred celým textom,
-- confidence scoring podľa zdroja extrakcie (`ioc_section` vs. `full_article` / `file`),
-- preview výsledkov, validačný report a runtime metriky,
-- export výsledkov do JSON,
-- vytvorenie alebo update MISP eventu po potvrdení používateľom,
-- mapovanie IoC do MISP atribútov a objektov,
-- pomocné evaluačné skripty pre fixtures a batch testovanie.
+## Features
 
-## Inštalácia
+* extraction of IoCs from URL, TXT, CSV, and PDF inputs,
+* supported IoC types: URL, IPv4 addresses, domains, email addresses, MD5, SHA1, and SHA256,
+* support for custom regex patterns loaded from `ioc_custom_regex.txt`,
+* refang of defanged values, for example `hxxp://`, `hxxps[://]`, `[.]`, `[@]`,
+* validation, normalization, and deduplication of values,
+* allowlist and exceptions rules for fine-tuning results,
+* attempt to prioritize the IoC section of an article over the full text,
+* confidence scoring based on extraction source (`ioc_section` vs. `full_article` / `file`),
+* results preview, validation report, and runtime metrics,
+* export of results to JSON,
+* creation or update of a MISP event after user confirmation,
+* mapping IoCs to MISP attributes and objects,
+* helper evaluation scripts for fixtures and batch testing.
 
-Vyžadovaná je funkčná inštalácia Pythonu 3.10 alebo novšieho.
+## Installation
+
+A working installation of Python 3.10 or newer is required.
 
 ```powershell
 python -m venv .venv
@@ -28,9 +30,9 @@ python -m venv .venv
 python -m pip install -r requirements.txt
 ```
 
-## Konfigurácia MISP
+## MISP Configuration
 
-V koreňovom adresári projektu vytvor súbor `.env`:
+Create a `.env` file in the project root directory:
 
 ```env
 MISP_URL=https://misp.example.local
@@ -39,77 +41,89 @@ MISP_VERIFY_SSL=false
 MISP_TIMEOUT=15
 ```
 
-Poznámka: súbor `.env` obsahuje API kľúč a nemal by byť commitnutý do repozitára.
+**Note**: the `.env` file contains an API key and should not be committed to the repository.
 
-Runtime nastavenia aplikácie sa dajú meniť aj cez súbor `config/app_config.json`:
+Application runtime settings can also be changed through the `config/app_config.json` file:
 
 ```json
 {
   "misp": {
-    "distribution": 1,
-    "analysis": 2,
-    "publish_event": false
+    "distribution": 0,
+    "sharing_group_id": 0,
+    "analysis": 0,
+    "publish_event": false,
+    "allow_xdr_export": false,
+    "enrich_event": false,
+    "dissect_urls": false
+  },
+
+  "report": {
+    "print_confidence": false,
+    "print_validation_report": false,
+    "print_attribute_preview": false,
+    "print_metrics": false,
+    "print_quick_preview": false
   }
 }
 ```
 
-Význam:
+Meaning:
 
-- `distribution` určuje MISP distribution level pre vytvorený alebo upravený event,
-- `analysis` určuje analysis level eventu,
-- `publish_event` určuje, či sa má po create/update zavolať publish.
+* `distribution` sets the MISP distribution level for the created or updated event,
+* `analysis` sets the event analysis level,
+* `publish_event` determines whether publish should be called after create/update.
 
-## Použitie
+## Usage
 
-Zobrazenie nápovedy:
+Show help:
 
 ```powershell
 python app.py --help
 ```
 
-Extrakcia z URL bez importu do MISP:
+Extract from a URL without importing into MISP:
 
 ```powershell
 python app.py --url https://example.com/threat-report
 ```
 
-Extrakcia z TXT súboru:
+Extract from a TXT file:
 
 ```powershell
 python app.py --file .\samples\iocs.txt
 ```
 
-Extrakcia z CSV súboru:
+Extract from a CSV file:
 
 ```powershell
 python app.py --file .\samples\iocs.csv
 ```
 
-Extrakcia z PDF súboru:
+Extract from a PDF file:
 
 ```powershell
 python app.py --file .\samples\report.pdf
 ```
 
-Uloženie výsledku do JSON:
+Save results to JSON:
 
 ```powershell
 python app.py --url https://example.com/threat-report --save-json outputs\result.json
 ```
 
-Import do MISP po potvrdení:
+Import into MISP after confirmation:
 
 ```powershell
 python app.py --file .\samples\report.pdf --push
 ```
 
-Pri použití prepínača `--push` aplikácia najprv zobrazí náhľad extrahovaných dát a vypýta si potvrdenie. Ak nájde existujúci event s rovnakým zdrojom, zobrazí rozdiely a spýta sa, či sa má existujúci event aktualizovať.
+When using the `--push` switch, the application first displays a preview of the extracted data and asks for confirmation. If it finds an existing event with the same source, it displays the differences and asks whether the existing event should be updated.
 
-## TXT, CSV a PDF vstupy
+## TXT, CSV, and PDF Inputs
 
-TXT súbor sa načíta ako plain text bez ďalšieho parsovania. Je vhodný napríklad pre threat intel feedy a zoznamy IoC po jednom na riadok.
+A TXT file is loaded as plain text without additional parsing. It is suitable, for example, for threat intelligence feeds and IoC lists with one entry per line.
 
-CSV súbor sa číta ako text zo všetkých buniek. Vďaka tomu fungujú aj jednoduché súbory vo formáte:
+A CSV file is read as text from all cells. Thanks to this, simple files in the following format also work:
 
 ```csv
 type,value
@@ -117,16 +131,16 @@ url,hxxp://bad[.]example/payload
 sha256,aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 ```
 
-PDF súbory sa čítajú pomocou knižnice `pypdf`. Ak PDF obsahuje iba naskenované obrázky bez textovej vrstvy, aplikácia nebude mať z čoho extrahovať text. V takom prípade je potrebné najprv použiť OCR mimo tejto aplikácie.
+PDF files are read using the `pypdf` library. If a PDF contains only scanned images without a text layer, the application will have no text to extract. In that case, OCR must be applied before using this application.
 
-## Allowlist a Exceptions
+## Allowlist and Exceptions
 
-Projekt používa dva konfigurovateľné textové súbory v priečinku `config/`:
+The project uses two configurable text files in the `config/` directory:
 
-- `config/ioc_allowlist.txt` slúži ako force include. Hodnota zostane vo výsledku aj vtedy, keď by ju predvolený filter zablokoval.
-- `config/ioc_exceptions.txt` slúži ako force exclude. Hodnota sa zahodí aj vtedy, keď by normálne prešla validáciou.
+* `config/ioc_allowlist.txt` acts as a force include list. A value remains in the results even if the default filter would block it.
+* `config/ioc_exceptions.txt` acts as a force exclude list. A value is discarded even if it would normally pass validation.
 
-Formát riadku:
+Line format:
 
 ```txt
 domain:packages.npm.org
@@ -138,13 +152,13 @@ sha1:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 ```
 
-Prázdne riadky a riadky začínajúce znakom `#` sa ignorujú. Hodnoty sa pri načítaní normalizujú, takže defangované URL alebo domény sa porovnávajú s normalizovaným tvarom.
+Empty lines and lines starting with `#` are ignored. Values are normalized when loaded, so defanged URLs or domains are compared using their normalized form.
 
 ## Custom Regex
 
-Projekt automaticky načíta vlastné regexy z textového súboru `config/ioc_custom_regex.txt`.
+The project automatically loads custom regex patterns from the `config/ioc_custom_regex.txt` text file.
 
-Formát riadku:
+Line format:
 
 ```txt
 btc-wallet:\b(?:bc1|[13])[a-zA-HJ-NP-Z0-9]{20,60}\b
@@ -152,122 +166,124 @@ mutex:Global\\[A-Za-z0-9_-]+
 npm-package:(?:^|[\s"'=:/])packages\.npm\.org\/((?:@[^\/\s"'<>]+\/)?[^\/\s"'<>?#]+)
 ```
 
-Pravidlá:
+Rules:
 
-- ľavá strana je názov regexu a vo výstupe sa objaví ako typ `custom:<name>`,
-- názov môže obsahovať malé písmená, čísla, `-` a `_`,
-- pravá strana je Python regex,
-- prázdne riadky a riadky začínajúce `#` sa ignorujú.
+* the left side is the regex name and appears in the output as type `custom:<name>`,
+* the name may contain lowercase letters, numbers, `-`, and `_`,
+* the right side is a Python regex,
+* empty lines and lines starting with `#` are ignored.
 
 Custom regex matches:
 
-- zobrazia sa v preview a v JSON exporte,
-- prejdú deduplikáciou rovnako ako ostatné typy,
-- pri MISP mapovaní sa ukladajú ako atribúty typu `text` s tagom `ioc-type:custom:<name>`.
+* are displayed in the preview and JSON export,
+* go through deduplication just like other types,
+* are stored during MISP mapping as `text` attributes with the tag `ioc-type:custom:<name>`.
 
-Ak regex obsahuje capture group, do výsledku sa uloží prvá neprázdna group. Ak group neobsahuje, uloží sa celý match.
+If a regex contains a capture group, the first non-empty group is stored in the result. If there is no group, the entire match is stored.
 
-## Extrakcia IoC sekcie
+## IoC Section Extraction
 
-Pri URL vstupoch sa aplikácia najprv pokúsi nájsť samostatnú IoC sekciu článku, napríklad podľa nadpisov typu:
+For URL inputs, the application first tries to find a dedicated IoC section in the article, for example based on headings such as:
 
-- `Indicators of Compromise`
-- `Indicator of Compromise`
-- `IoCs`
-- `IoC`
+* `Indicators of Compromise`
+* `Indicator of Compromise`
+* `IoCs`
+* `IoC`
 
-Ak sa IoC sekcia nájde a vyzerá použiteľne, extrakcia beží nad ňou. Inak sa použije celý článok.
+If an IoC section is found and looks usable, extraction runs on it. Otherwise, the entire article is used.
 
-Confidence scoring je naviazaný na `extraction_scope`:
+Confidence scoring is tied to `extraction_scope`:
 
-- `ioc_section` -> validné IoC dostanú `high`,
-- `full_article` a `file` -> scoring je konzervatívnejší.
+* `ioc_section` -> valid IoCs receive `high`,
+* `full_article` and `file` -> scoring is more conservative.
 
-## Správanie pri importe do MISP
+## Behavior During MISP Import
 
-Nový event obsahuje:
+A new event contains:
 
-- atribút zdroja:
-  - `link`, ak je zdroj webová URL,
-  - `text`, ak je zdroj lokálny súbor,
-- názov zdroja ako atribút typu `text`,
-- neobjektové IoC ako atribúty,
-- objektové IoC ako MISP objekty:
-  - `url`,
-  - `domain-ip`,
-  - `file`,
-- tagy pre zdroj, validáciu, typ IoC a confidence.
+* source attribute:
 
-Pri duplicitnom zdroji aplikácia:
+  * `link` if the source is a web URL,
+  * `text` if the source is a local file,
+* source name as a `text` attribute,
+* non-object IoCs as attributes,
+* object-based IoCs as MISP objects:
 
-1. nájde existujúci event,
-2. načíta jeho atribúty a objekty,
-3. vypíše nové a už existujúce položky,
-4. po potvrdení doplní iba nové hodnoty.
+  * `url`,
+  * `domain-ip`,
+  * `file`,
+* tags for source, validation, IoC type, and confidence.
 
-Poznámka: aplikácia event vytvorí alebo aktualizuje, ale aktuálne nevolá finálne `publish`.
+For duplicate sources, the application:
 
-## Evaluačné skripty
+1. finds the existing event,
+2. loads its attributes and objects,
+3. displays new and already existing items,
+4. after confirmation, adds only the new values.
 
-Projekt obsahuje aj pomocné skripty pre overenie riešenia:
+Note: the application creates or updates the event, but currently does not call the final `publish`.
 
-Spustenie evaluácie nad fixture datasetom:
+## Evaluation Scripts
+
+The project also includes helper scripts for validating the solution:
+
+Run evaluation on the fixture dataset:
 
 ```powershell
 python tools\build_fixture_report.py
 ```
 
-Výstupy:
+Outputs:
 
-- `outputs/evaluation/fixture_report.json`
-- `outputs/evaluation/fixture_report.md`
+* `outputs/evaluation/fixture_report.json`
+* `outputs/evaluation/fixture_report.md`
 
-Spustenie batch evaluácie nad zoznamom URL / súborov:
+Run batch evaluation on a list of URLs/files:
 
 ```powershell
 python tools\run_batch_manifest.py tools\sample_manifest.json
 ```
 
-Výstupy:
+Outputs:
 
-- `outputs/evaluation/batch_report.json`
-- `outputs/evaluation/batch_report.md`
+* `outputs/evaluation/batch_report.json`
+* `outputs/evaluation/batch_report.md`
 
-## Štruktúra projektu
+## Project Structure
 
 ```txt
-app.py                      hlavný CLI vstup
-src/article_fetcher.py      načítanie a čistenie webových článkov
-src/file_loader.py          načítanie TXT, CSV a PDF súborov
-src/ioc_extractor.py        regex extrakcia IoC
-src/ioc_processor.py        validácia, normalizácia, deduplikácia, allowlist a exceptions
-src/misp_mapper.py          mapovanie IoC na MISP atribúty
-src/misp_exporter.py        vytváranie a aktualizácia MISP eventov cez PyMISP
-src/json_exporter.py        export do JSON
-src/metrics.py              metriky a vyhodnotenie
-tests/                      unit testy a testovacie dáta
-tools/                      pomocné evaluačné skripty
+app.py                      main CLI entry point
+src/article_fetcher.py      loading and cleaning web articles
+src/file_loader.py          loading TXT, CSV, and PDF files
+src/ioc_extractor.py        regex-based IoC extraction
+src/ioc_processor.py        validation, normalization, deduplication, allowlist, and exceptions
+src/misp_mapper.py          mapping IoCs to MISP attributes
+src/misp_exporter.py        creating and updating MISP events through PyMISP
+src/json_exporter.py        export to JSON
+src/metrics.py              metrics and evaluation
+tests/                      unit tests and test data
+tools/                      helper evaluation scripts
 ```
 
-## Testovanie
+## Testing
 
-Spustenie testov:
+Run tests:
 
 ```powershell
 python -m unittest discover -s tests
 ```
 
-Kontrola kompilácie:
+Check compilation:
 
 ```powershell
 python -m compileall app.py src tests
 ```
 
-## Známe obmedzenia
+## Known Limitations
 
-- Extrakcia z URL funguje spoľahlivo len na niektorých stránkach. Závisí od HTML štruktúry, dostupnosti obsahu v statickom HTML a od toho, či je text článku načítateľný bez browser renderingu.
-- Nie všetky weby vracajú pri obyčajnom HTTP requeste plné telo článku. Niektoré stránky preto nemusia poskytnúť žiadne IoC aj napriek tomu, že ich v prehliadači obsahujú.
-- PDF bez textovej vrstvy vyžaduje OCR mimo aplikácie.
-- CSV parser je generický a číta všetky bunky ako text.
-- README ani aplikácia momentálne neimplementujú OpenCTI workflow.
-- Aplikácia aktuálne nevolá `publish`; event iba pripraví alebo uloží do MISP po kontrole používateľom.
+* URL extraction works reliably only on some websites. It depends on the HTML structure, availability of content in static HTML, and whether the article text can be read without browser rendering.
+* Not all websites return the full article body in a regular HTTP request. As a result, some websites may not provide any IoCs even though they contain them when viewed in a browser.
+* PDFs without a text layer require OCR outside the application.
+* The CSV parser is generic and reads all cells as text.
+* Neither the README nor the application currently implement an OpenCTI workflow.
+* The application currently does not call `publish`; it only prepares or saves the event to MISP after user review.

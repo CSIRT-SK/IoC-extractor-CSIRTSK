@@ -77,7 +77,7 @@ def fetch_article(url: str, timeout: int = 20) -> Article:
     text = extract_main_text(soup)
 
     if not text:
-        raise ValueError("Nepodarilo sa extrahovať text článku.")
+        raise ValueError("Could not extract any text from the article")
 
     return Article(
         url=url,

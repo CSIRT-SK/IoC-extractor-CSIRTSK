@@ -1,3 +1,0 @@
-MISP_URL=''
-MISP_KEY=''
-MISP_VERIFY_SSL=''

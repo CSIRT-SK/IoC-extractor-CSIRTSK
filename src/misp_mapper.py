@@ -46,8 +46,8 @@ def map_iocs_to_misp_attributes(
                 value=value,
                 category="Network activity",
                 to_ids=True,
-                comment=build_comment("Extracted from article", "url", value, confidence),
-                tags=build_tags("url", value, confidence),
+                comment=None, #build_comment("Extracted from article", "url", value, confidence),
+                tags=None #build_tags("url", value, confidence),
             )
         )
 
@@ -58,8 +58,8 @@ def map_iocs_to_misp_attributes(
                 value=value,
                 category="Network activity",
                 to_ids=True,
-                comment=build_comment("Extracted from article", "ip-dst", value, confidence),
-                tags=build_tags("ip-dst", value, confidence),
+                comment=None, #build_comment("Extracted from article", "ip-dst", value, confidence),
+                tags=None #build_tags("ip-dst", value, confidence),
             )
         )
 
@@ -70,8 +70,8 @@ def map_iocs_to_misp_attributes(
                 value=value,
                 category="Network activity",
                 to_ids=True,
-                comment=build_comment("Extracted from article", "domain", value, confidence),
-                tags=build_tags("domain", value, confidence),
+                comment=None, #build_comment("Extracted from article", "domain", value, confidence),
+                tags=None #build_tags("domain", value, confidence),
             )
         )
 
@@ -83,13 +83,8 @@ def map_iocs_to_misp_attributes(
                 value=value,
                 category="Payload delivery",
                 to_ids=False,
-                comment=build_comment(
-                    "Email extracted from article; review recommended",
-                    "email-src",
-                    value,
-                    confidence,
-                ),
-                tags=build_tags("email-src", value, confidence),
+                comment=None, #build_comment("Email extracted from article; review recommended", "email-src", value, confidence,),
+                tags=None #build_tags("email-src", value, confidence),
             )
         )
 
@@ -100,8 +95,8 @@ def map_iocs_to_misp_attributes(
                 value=value,
                 category="Payload delivery",
                 to_ids=True,
-                comment=build_comment("Extracted from article", "md5", value, confidence),
-                tags=build_tags("md5", value, confidence),
+                comment=None, #build_comment("Extracted from article", "md5", value, confidence),
+                tags=None #build_tags("md5", value, confidence),
             )
         )
 
@@ -112,8 +107,8 @@ def map_iocs_to_misp_attributes(
                 value=value,
                 category="Payload delivery",
                 to_ids=True,
-                comment=build_comment("Extracted from article", "sha1", value, confidence),
-                tags=build_tags("sha1", value, confidence),
+                comment=None, #build_comment("Extracted from article", "sha1", value, confidence),
+                tags=None #build_tags("sha1", value, confidence),
             )
         )
 
@@ -124,8 +119,8 @@ def map_iocs_to_misp_attributes(
                 value=value,
                 category="Payload delivery",
                 to_ids=True,
-                comment=build_comment("Extracted from article", "sha256", value, confidence),
-                tags=build_tags("sha256", value, confidence),
+                comment=None, #build_comment("Extracted from article", "sha256", value, confidence),
+                tags=None #build_tags("sha256", value, confidence),
             )
         )
 
@@ -139,8 +134,8 @@ def map_iocs_to_misp_attributes(
                     value=value,
                     category="External analysis",
                     to_ids=False,
-                    comment=build_comment("Extracted by custom regex", ioc_type, value, confidence),
-                    tags=build_tags(ioc_type, value, confidence),
+                    comment=None, #build_comment("Extracted by custom regex", ioc_type, value, confidence),
+                    tags=None #build_tags(ioc_type, value, confidence),
                 )
             )
 
@@ -176,10 +171,10 @@ def build_tags(
         f"ioc-type:{ioc_type}",
     ]
 
-    if confidence:
-        data = confidence.get(ioc_type, {}).get(value)
-        if data:
-            tags.append(f'confidence:{data.get("level", "unknown")}')
+    #if confidence:
+    #    data = confidence.get(ioc_type, {}).get(value)
+    #    if data:
+    #        tags.append(f'confidence:{data.get("level", "unknown")}')
 
     return tags
 

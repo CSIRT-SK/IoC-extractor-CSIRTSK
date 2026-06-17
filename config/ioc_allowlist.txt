@@ -1,9 +1,8 @@
-# Vlastny IoC allowlist.
+# Custom IoC allowlist
 # Format: <ioc-type>:<value>
-# Podporovane typy: url, ip-dst, domain, email-src, md5, sha1, sha256
-# Riadky zacinajuce # su ignorovane.
+# Supported types: url, ip-dst, domain, email-src, md5, sha1, sha256
 
-# Priklady:
+# Examples:
 # domain:github.com
 # domain:packages.npm.org
 # email-src:user@proton.me

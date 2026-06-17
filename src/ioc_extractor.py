@@ -322,7 +322,7 @@ def is_probably_domain(value: str) -> bool:
 
 def extract_iocs(
     text: str,
-    custom_patterns: Dict[str, re.Pattern[str]] | None = None,
+    custom_patterns: Dict[str, re.Pattern[str]] | None = None
 ) -> ExtractedIOCs:
     text = repair_split_hash_lines(text)
     extraction_normalized = collect_extraction_normalizations(text)

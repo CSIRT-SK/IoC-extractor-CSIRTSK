@@ -1,7 +1,19 @@
 {
   "misp": {
-    "distribution": 3,
+    "distribution": 4,
+    "sharing_group_id": 1,
     "analysis": 2,
-    "publish_event": true
+    "publish_event": false,
+    "allow_xdr_export": false,
+    "enrich_event": true,
+    "dissect_urls": true
+  },
+
+  "report": {
+    "print_confidence": false,
+    "print_validation_report": false,
+    "print_attribute_preview": false,
+    "print_metrics": false,
+    "print_quick_preview": true
   }
 }

@@ -217,7 +217,7 @@ def process_iocs_for_misp(
                 continue
             for value in values:
                 report.rejected.append(
-                    ProcessingIssue(ioc_type, value, "unsupported IoC type")
+                    ProcessingIssue(ioc_type, value, "Unsupported IoC type")
                 )
             continue
 
@@ -230,7 +230,7 @@ def process_iocs_for_misp(
 
             if normalized is None:
                 report.rejected.append(
-                    ProcessingIssue(ioc_type, raw_value, "invalid value for type")
+                    ProcessingIssue(ioc_type, raw_value, "Invalid value for type")
                 )
                 continue
 
@@ -273,9 +273,17 @@ def filter_source_site_noise(
         if is_source_site_noise_url(url, source_host) and ("url", url) not in allowlist:
             if report is not None:
                 report.rejected.append(
-                    ProcessingIssue("url", url, "source site navigation or asset URL")
+                    ProcessingIssue("url", url, "Source site navigation or asset URL")
                 )
             continue
+
+        if url == source_url:
+            if report is not None:
+                report.rejected.append(
+                    ProcessingIssue("url", url, "Source URL, not IoC")
+                )
+            continue
+
         kept_urls.append(url)
 
     filtered["url"] = kept_urls
@@ -285,7 +293,7 @@ def filter_source_site_noise(
         if is_benign_domain(domain) and ("domain", domain) not in allowlist:
             if report is not None:
                 report.rejected.append(
-                    ProcessingIssue("domain", domain, "known benign infrastructure domain")
+                    ProcessingIssue("domain", domain, "Known benign infrastructure domain")
                 )
             continue
         kept_domains.append(domain)
@@ -298,7 +306,7 @@ def filter_source_site_noise(
         if is_benign_domain(domain) and ("email-src", email) not in allowlist:
             if report is not None:
                 report.rejected.append(
-                    ProcessingIssue("email-src", email, "known benign email provider domain")
+                    ProcessingIssue("email-src", email, "Known benign email provider domain")
                 )
             continue
         kept_emails.append(email)
@@ -377,7 +385,7 @@ def apply_ioc_exceptions(
             if (ioc_type, value) in exceptions:
                 if report is not None:
                     report.rejected.append(
-                        ProcessingIssue(ioc_type, value, "custom IoC exception")
+                        ProcessingIssue(ioc_type, value, "Custom IoC exception")
                     )
                 continue
             kept_values.append(value)
@@ -395,19 +403,19 @@ def score_single_ioc(
     extraction_scope: str,
 ) -> Tuple[str, str]:
     if extraction_scope == "ioc_section":
-        return "high", "extracted from dedicated IoC section"
+        return "High", "Extracted from dedicated IoC section"
 
     if ioc_type.startswith("custom:"):
         return apply_scope_bias(
-            "medium",
-            "custom regex match; review recommended",
+            "Medium",
+            "Custom regex match; review recommended",
             extraction_scope,
         )
 
     if ioc_type in {"md5", "sha1", "sha256"}:
         return apply_scope_bias(
-            "high",
-            "cryptographic hash with exact expected length",
+            "High",
+            "Cryptographic hash with exact expected length",
             extraction_scope,
         )
 
@@ -416,12 +424,12 @@ def score_single_ioc(
         if ip.is_private or ip.is_loopback or ip.is_link_local or ip.is_multicast:
             return apply_scope_bias(
                 "low",
-                "non-public IP address",
+                "Non-public IP address",
                 extraction_scope,
             )
         return apply_scope_bias(
-            "high",
-            "valid public IP address",
+            "High",
+            "Valid public IP address",
             extraction_scope,
         )
 
@@ -429,13 +437,13 @@ def score_single_ioc(
         parts = urlsplit(value)
         if parts.path and parts.path not in {"", "/"}:
             return apply_scope_bias(
-                "high",
-                "valid URL with path",
+                "High",
+                "Valid URL with path",
                 extraction_scope,
             )
         return apply_scope_bias(
-            "medium",
-            "valid URL with host only",
+            "Medium",
+            "Valid URL with host only",
             extraction_scope,
         )
 
@@ -443,26 +451,26 @@ def score_single_ioc(
         labels = value.split(".")
         if len(labels) >= 3:
             return apply_scope_bias(
-                "high",
-                "valid fully qualified hostname",
+                "High",
+                "Valid fully qualified hostname",
                 extraction_scope,
             )
         return apply_scope_bias(
-            "medium",
-            "valid registrable domain",
+            "Medium",
+            "Valid registrable domain",
             extraction_scope,
         )
 
     if ioc_type == "email-src":
         return apply_scope_bias(
-            "medium",
-            "valid email address; review recommended before to_ids",
+            "Medium",
+            "Valid email address; review recommended before to_ids",
             extraction_scope,
         )
 
     return apply_scope_bias(
         "low",
-        "valid format but unsupported confidence heuristic",
+        "Valid format but unsupported confidence heuristic",
         extraction_scope,
     )
 
@@ -473,10 +481,10 @@ def apply_scope_bias(
     extraction_scope: str,
 ) -> Tuple[str, str]:
     if extraction_scope == "ioc_section":
-        return "high", "extracted from dedicated IoC section"
+        return "High", "Extracted from dedicated IoC section"
 
-    if extraction_scope in {"full_article", "file"} and base_level == "high":
-        return "medium", f"{base_reason}; extracted from broader source"
+    if extraction_scope in {"full_article", "file"} and base_level.lower() == "high":
+        return "Medium", f"{base_reason}; Extracted from broader source"
 
     return base_level, base_reason
 
@@ -754,7 +762,7 @@ def drop_domains_already_covered_by_urls(
             domain,
         ) not in allowlist:
             report.rejected.append(
-                ProcessingIssue("domain", domain, "already covered by URL host")
+                ProcessingIssue("domain", domain, "Already covered by URL host")
             )
             continue
         kept_domains.append(domain)
@@ -840,7 +848,7 @@ def process_custom_iocs(
         normalized = normalize_custom_ioc(raw_value)
         if normalized is None:
             report.rejected.append(
-                ProcessingIssue(ioc_type, raw_value, "empty custom regex match")
+                ProcessingIssue(ioc_type, raw_value, "Empty custom regex match")
             )
             continue
 

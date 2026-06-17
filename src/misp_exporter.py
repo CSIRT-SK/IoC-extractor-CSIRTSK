@@ -88,7 +88,7 @@ def build_misp_client() -> PyMISP:
     timeout = float(os.getenv("MISP_TIMEOUT", "15"))
 
     if not misp_url or not misp_key:
-        raise ValueError("Chýba MISP_URL alebo MISP_KEY v .env")
+        raise ValueError("Missing MISP_URL or MISP_KEY in .env file")
 
     return PyMISP(
         misp_url,
@@ -165,22 +165,25 @@ def _attach_tags(
 def _event_tags(attributes: List[MISPAttributeData]) -> List[str]:
     tags = {
         "tlp:clear",
-        "source:article",
-        "ioc:processed",
-        "ioc-status:validated",
+        "csirtsk:event-source=\"monitoring\"",
+        "csirtsk:event-purpose=\"inform\"",
+        "event-status:stage=\"event-finished\""
     }
 
-    confidence_levels = set()
-    ioc_types = set()
+    misp_config = get_app_config().misp
+    tags.add("xdr:export=\"allow\"") if misp_config.allow_xdr_export else tags.add("xdr:export=\"deny\"")
 
-    for attr in attributes:
-        ioc_types.add(attr.type)
-        for tag in attr.tags:
-            if tag.startswith("confidence:"):
-                confidence_levels.add(tag)
+    #confidence_levels = set()
+    #ioc_types = set()
 
-    tags.update(confidence_levels)
-    tags.update(f"ioc-contains-type:{ioc_type}" for ioc_type in sorted(ioc_types))
+    #for attr in attributes:
+    #    ioc_types.add(attr.type)
+    #    for tag in attr.tags:
+    #        if tag.startswith("confidence:"):
+    #            confidence_levels.add(tag)
+
+    #tags.update(confidence_levels)
+    #tags.update(f"ioc-contains-type:{ioc_type}" for ioc_type in sorted(ioc_types))
     return sorted(tags)
 
 
@@ -271,6 +274,10 @@ def _add_attribute(event: MISPEvent, attr: MISPAttributeData) -> None:
 def _mark_event_publishable(event: MISPEvent) -> None:
     misp_config = get_app_config().misp
     event.distribution = misp_config.distribution
+
+    if misp_config.distribution == 4:
+        event.sharing_group_id = misp_config.sharing_group_id
+
     event.analysis = misp_config.analysis
     event.published = False
     try:
@@ -622,9 +629,9 @@ def _find_existing_event_by_source_url(misp: PyMISP, source_url: str) -> str | N
         )
         return _extract_existing_event_id(results)
     except Exception as exc:
-        print(f"Warning: Nepodarilo sa overiť existujúci MISP event: {exc}", file=sys.stderr)
+        print(f"[!] WARNING: Following MISP event could not be validated for duplicity: {exc}", file=sys.stderr)
         raise RuntimeError(
-            "Kontrola duplicity v MISP zlyhala, nový event nebol vytvorený."
+            "Duplicate entry validation failed, new event was not created"
         ) from exc
 
 
@@ -703,36 +710,48 @@ def create_event(
     attributes: List[MISPAttributeData],
 ) -> tuple[str, bool]:
     misp = build_misp_client()
+    misp_config = get_app_config().misp
+
     try:
         existing_event_id = _find_existing_event_by_source_url(misp, source_url)
         if existing_event_id:
             return existing_event_id, False
 
         event = MISPEvent()
-        event.info = f"Auto-import IoC from article: {title}"
+        ticket_id = input("Input OTRS ticket ID to be used in the event title (write 'skip' for no ticket ID): ")
+        if ticket_id.strip().lower() == "skip":
+            print("\t[*] No OTRS ID attached to this event")
+        event.info = f"{'CSIRT.SK #' + ticket_id.strip() + ' - ' if (ticket_id.strip().lower() != 'skip') else ''}{title}"
         event.threat_level_id = 2
         _mark_event_publishable(event)
 
         _add_tags(event, _event_tags(attributes))
-
         source = _source_data(source_url)
-        source_attribute = event.add_attribute(
-            type=source.type,
-            value=source.value,
-            category=source.category,
-            to_ids=False,
-            comment=source.comment,
-        )
-        _add_tags(source_attribute, ["source:article", "ioc:source"])
 
-        title_attribute = event.add_attribute(
-            type="text",
-            value=title,
-            category="External analysis",
-            to_ids=False,
-            comment="Source article title",
-        )
-        _add_tags(title_attribute, ["source:article", "ioc:context"])
+        source_obj = MISPObject("report")
+        src_link = source_obj.add_attribute("link", source.value)
+        src_link.add_tag("safe-to-open:\"safe\"")
+        source_obj.add_attribute("title", title)
+
+        event.add_object(source_obj)
+
+        #source_attribute = event.add_attribute(
+        #    type=source.type,
+        #    value=source.value,
+        #    category=source.category,
+        #    to_ids=False,
+        #    comment=source.comment,
+        #)
+        #_add_tags(source_attribute, ["source:article", "ioc:source"])
+
+        #title_attribute = event.add_attribute(
+        #    type="text",
+        #    value=title,
+        #    category="External analysis",
+        #    to_ids=False,
+        #    comment="Source article title",
+        #)
+        #_add_tags(title_attribute, ["source:article", "ioc:context"])
 
         for attr in _standalone_ioc_attributes(attributes):
             try:
@@ -757,6 +776,15 @@ def create_event(
             attributes=attributes,
             existing_tags=existing_tags,
         )
+
+        misp.tag(created_event.uuid, "workflow:state=\"complete\"", local=True)
+
+        if misp_config.enrich_event:
+            misp.enrich_event(created_event.uuid, "recordedfuture")
+
+        if misp_config.dissect_urls:
+            misp.enrich_event(created_event.uuid, "extract_url_components")
+
         _publish_event_if_enabled(misp, str(created_event.id))
         return str(created_event.id), True
     finally:
