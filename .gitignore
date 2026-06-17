@@ -1,0 +1,20 @@
+# .env file
+.env
+
+# Config files
+config/app_config.json
+config/ioc_allowlist.txt
+config/ioc_custom_regex.txt
+config/ioc_exceptions.txt
+
+# Files in IOC_analyst directory
+IOC_analyst/*.json
+
+# .venv directory
+.venv/
+
+# Evaluation directory
+outputs/evaluation/*
+
+# Cache files
+__pycache__/
