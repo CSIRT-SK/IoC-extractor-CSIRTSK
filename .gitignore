@@ -2,7 +2,7 @@
 .env
 
 # Config files
-config/app_config.json
+app_config.json
 config/ioc_allowlist.txt
 config/ioc_custom_regex.txt
 config/ioc_exceptions.txt
