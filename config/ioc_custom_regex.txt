@@ -1,7 +1,0 @@
-# Custom regex rules for IoC detection
-# Format: <name>:<regex>
-# Output format is displayed as 'custom:<name>'
-#
-# Examples:
-# btc-wallet:\b(?:bc1|[13])[a-zA-HJ-NP-Z0-9]{20,60}\b
-npm-package:(?:^|[\s"'=:/])packages\.npm\.org\/((?:@[^\/\s"'<>]+\/)?[^\/\s"'<>?#]+)
