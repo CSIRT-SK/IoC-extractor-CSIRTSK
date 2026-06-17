@@ -1,4 +1,6 @@
-# IoC Processor and Extractor to MISP
+# Automatizované spracovanie a nahrávanie IoC do MISPu
+
+*Všetka zásluha patrí tvorcovi tohto nástroja - [Kristian Kapec](https://github.com/Kristian-Kapec/BP-IoC-extractor)*
 
 CLI aplikácia na extrakciu indikátorov kompromitácie (IoC) z verejných zdrojov a ich import do platformy MISP. Podporuje webové články, TXT, CSV a PDF súbory, validáciu, normalizáciu, deduplikáciu, allowlist/exceptions pravidlá, export do JSON a potvrdený import do MISP cez PyMISP.
 
@@ -28,27 +30,39 @@ python -m venv .venv
 python -m pip install -r requirements.txt
 ```
 
-## Konfigurácia MISP
+## Konfigurácia MISPu
 
 V koreňovom adresári projektu vytvor súbor `.env`:
 
 ```env
-MISP_URL=https://misp.example.local
-MISP_KEY=your_api_key
-MISP_VERIFY_SSL=false
-MISP_TIMEOUT=15
+MISP_URL="https://misp.example.local"
+MISP_KEY="your_api_key"
+MISP_VERIFY_SSL="false"
+MISP_TIMEOUT="15"
 ```
 
-Poznámka: súbor `.env` obsahuje API kľúč a nemal by byť commitnutý do repozitára.
+Poznámka: súbor `.env` obsahuje API kľúč a nemal by byť nahratý do repozitára, vyhnite sa tomu pridaním súboru `.env` do *.gitignore*.
 
 Runtime nastavenia aplikácie sa dajú meniť aj cez súbor `config/app_config.json`:
 
 ```json
 {
   "misp": {
-    "distribution": 1,
-    "analysis": 2,
-    "publish_event": false
+    "distribution": 0,
+    "sharing_group_id": 0,
+    "analysis": 0,
+    "publish_event": false,
+    "allow_xdr_export": false,
+    "enrich_event": false,
+    "dissect_urls": false
+  },
+
+  "report": {
+    "print_confidence": false,
+    "print_validation_report": false,
+    "print_attribute_preview": false,
+    "print_metrics": false,
+    "print_quick_preview": false
   }
 }
 ```
@@ -140,7 +154,7 @@ sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 
 Prázdne riadky a riadky začínajúce znakom `#` sa ignorujú. Hodnoty sa pri načítaní normalizujú, takže defangované URL alebo domény sa porovnávajú s normalizovaným tvarom.
 
-## Custom Regex
+## Vlastné regulárne výrazy
 
 Projekt automaticky načíta vlastné regexy z textového súboru `config/ioc_custom_regex.txt`.
 
@@ -159,13 +173,13 @@ Pravidlá:
 - pravá strana je Python regex,
 - prázdne riadky a riadky začínajúce `#` sa ignorujú.
 
-Custom regex matches:
+Zhody cez vlastný regulárny výraz:
 
 - zobrazia sa v preview a v JSON exporte,
 - prejdú deduplikáciou rovnako ako ostatné typy,
 - pri MISP mapovaní sa ukladajú ako atribúty typu `text` s tagom `ioc-type:custom:<name>`.
 
-Ak regex obsahuje capture group, do výsledku sa uloží prvá neprázdna group. Ak group neobsahuje, uloží sa celý match.
+Ak regex obsahuje capture group, do výsledku sa uloží prvá neprázdna group. Ak group neobsahuje, uloží sa celá zhoda.
 
 ## Extrakcia IoC sekcie
 
@@ -178,14 +192,14 @@ Pri URL vstupoch sa aplikácia najprv pokúsi nájsť samostatnú IoC sekciu čl
 
 Ak sa IoC sekcia nájde a vyzerá použiteľne, extrakcia beží nad ňou. Inak sa použije celý článok.
 
-Confidence scoring je naviazaný na `extraction_scope`:
+Prideľovanie "Confidence" skóre je naviazané na `extraction_scope`:
 
 - `ioc_section` -> validné IoC dostanú `high`,
-- `full_article` a `file` -> scoring je konzervatívnejší.
+- `full_article` a `file` -> systém prideľovania skóre je konzervatívnejší.
 
 ## Správanie pri importe do MISP
 
-Nový event obsahuje:
+Nová udalosť obsahuje:
 
 - atribút zdroja:
   - `link`, ak je zdroj webová URL,
@@ -196,7 +210,7 @@ Nový event obsahuje:
   - `url`,
   - `domain-ip`,
   - `file`,
-- tagy pre zdroj, validáciu, typ IoC a confidence.
+- *~~tagy pre zdroj, validáciu, typ IoC a confidence~~*.
 
 Pri duplicitnom zdroji aplikácia:
 
@@ -205,13 +219,13 @@ Pri duplicitnom zdroji aplikácia:
 3. vypíše nové a už existujúce položky,
 4. po potvrdení doplní iba nové hodnoty.
 
-Poznámka: aplikácia event vytvorí alebo aktualizuje, ale aktuálne nevolá finálne `publish`.
+Poznámka: aplikácia udalosť vytvorí alebo aktualizuje, ale aktuálne nevolá finálne `publish`.
 
 ## Evaluačné skripty
 
 Projekt obsahuje aj pomocné skripty pre overenie riešenia:
 
-Spustenie evaluácie nad fixture datasetom:
+Spustenie evaluácie nad datasetom:
 
 ```powershell
 python tools\build_fixture_report.py

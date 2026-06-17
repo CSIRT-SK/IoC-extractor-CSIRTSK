@@ -35,13 +35,13 @@ python -m pip install -r requirements.txt
 Create a `.env` file in the project root directory:
 
 ```env
-MISP_URL=https://misp.example.local
-MISP_KEY=your_api_key
-MISP_VERIFY_SSL=false
-MISP_TIMEOUT=15
+MISP_URL="https://misp.example.local"
+MISP_KEY="your_api_key"
+MISP_VERIFY_SSL="false"
+MISP_TIMEOUT="15"
 ```
 
-**Note**: the `.env` file contains an API key and should not be committed to the repository.
+**Note**: the `.env` file contains an API key and should not be committed to the repository, avoid it by listing the `.env` file in *.gitignore*.
 
 Application runtime settings can also be changed through the `config/app_config.json` file:
 
@@ -212,7 +212,7 @@ A new event contains:
   * `url`,
   * `domain-ip`,
   * `file`,
-* tags for source, validation, IoC type, and confidence.
+* *~~tags for source, validation, IoC type, and confidence~~*.
 
 For duplicate sources, the application:
 
