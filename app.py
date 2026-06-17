@@ -39,6 +39,7 @@ from src.misp_exporter import (
 )
 from src.misp_mapper import map_iocs_to_misp_attributes
 from src.section_extractor import extract_ioc_section_from_text
+from src.config import load_app_config
 
 
 warnings.filterwarnings("ignore")
@@ -238,6 +239,7 @@ def main() -> int:
 
     try:
         input_content = load_input_content(args.url, args.file)
+        report_config = load_app_config().report
 
         custom_patterns = load_custom_regex_patterns()
         extracted = extract_iocs(input_content.text, custom_patterns=custom_patterns)
@@ -256,13 +258,13 @@ def main() -> int:
         )
         metrics = compute_runtime_metrics(iocs, processing_report, confidence)
 
-        print_preview(input_content.title, input_content.source, iocs)
-        print_processing_report(processing_report)
-        print_confidence_preview(confidence)
-        print_metrics(metrics)
+        if report_config.print_quick_preview: print_preview(input_content.title, input_content.source, iocs)
+        if report_config.print_validation_report: print_processing_report(processing_report)
+        if report_config.print_confidence: print_confidence_preview(confidence)
+        if report_config.print_metrics: print_metrics(metrics)
 
         misp_attributes = map_iocs_to_misp_attributes(iocs, confidence=confidence)
-        print_misp_preview(misp_attributes)
+        if report_config.print_attribute_preview: print_misp_preview(misp_attributes)
 
         if args.save_json:
             output_path = save_iocs_to_json(

@@ -718,7 +718,7 @@ def create_event(
             return existing_event_id, False
 
         event = MISPEvent()
-        ticket_id = input("Input OTRS ticket ID to be used in the event title (write 'skip' for no ticket ID): ")
+        ticket_id = input("[?] Input OTRS ticket ID to be used in the event title (write 'skip' for no ticket ID): ")
         if ticket_id.strip().lower() == "skip":
             print("\t[*] No OTRS ID attached to this event")
         event.info = f"{'CSIRT.SK #' + ticket_id.strip() + ' - ' if (ticket_id.strip().lower() != 'skip') else ''}{title}"
