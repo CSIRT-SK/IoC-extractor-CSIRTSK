@@ -729,9 +729,12 @@ def create_event(
         source = _source_data(source_url)
 
         source_obj = MISPObject("report")
+        source_obj.comment = "Report"
         src_link = source_obj.add_attribute("link", source.value)
         src_link.add_tag("safe-to-open:\"safe\"")
         source_obj.add_attribute("title", title)
+        summary = source_obj.add_attribute("summary", "<INSERT-SUMMARY-HERE>", )
+        summary.distribution = 0
 
         event.add_object(source_obj)
 
